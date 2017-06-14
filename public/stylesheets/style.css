@@ -1,0 +1,56 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+form {
+    margin: 15px 0px;
+}
+
+th {
+    text-align: center !important;
+}
+tr {
+    border: 1px black solid;
+}
+
+.reddit-result-row:nth-child(odd) {
+    background: #DBDADA;
+}
+
+.reddit-result-row:nth-child(even) {
+    background: #EFEEEE;
+}
+
+.reddit-result-row:first-child {
+    background: white;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.reddit-result-row {
+    display: table-row;
+}
+
+.reddit-result-row div {
+    display: table-cell;
+    vertical-align: top;
+    padding: 8px;
+}
+
+.reddit-result-panel {
+    display: none;
+}
+
+.reddit-noresult-panel{
+    display: none;
+}
+
+#redditresult {
+    display: table;
+}
