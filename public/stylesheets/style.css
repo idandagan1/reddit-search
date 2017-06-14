@@ -26,6 +26,11 @@ tr {
     background: #EFEEEE;
 }
 
+img {
+    vertical-align: middle;
+    width: 100%;
+}
+
 .reddit-result-row:first-child {
     background: white;
     text-align: center;

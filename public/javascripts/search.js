@@ -7,7 +7,7 @@ const searchApi = {
         }
 
         return new Promise((resolve, reject) => {
-            $.ajax(`https://www.reddit.com/search.json?q=${input}&sort=new`, {
+            $.ajax(`https://www.reddit.com/search.json?q=${input}&sort=new&callback=onRedditSearchSuccess`, {
                 method: 'GET',
                 success: (res, status, xhr) => resolve(res),
                 error: (xhr, status, error) => reject(xhr.responseJSON),
@@ -43,7 +43,7 @@ function onRedditSearchSuccess(result, input) {
             url,
             title,
             selftext,
-            thumbnail: thumbnail || preview.images[0].source.url,
+            thumbnail: preview ? preview.images[0].source.url : thumbnail,
         };
     })
 
