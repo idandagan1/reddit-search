@@ -2,12 +2,8 @@ const searchApi = {
 
     search: (input) => {
 
-        if (!input) {
-            return;
-        }
-
         return new Promise((resolve, reject) => {
-            $.ajax(`https://www.reddit.com/search.json?q=${input}&sort=new&callback=onRedditSearchSuccess`, {
+            $.ajax(`https://www.reddit.com/search.json?q=${input}&sort=new?callback=?`, {
                 method: 'GET',
                 success: (res, status, xhr) => resolve(res),
                 error: (xhr, status, error) => reject(xhr.responseJSON),
@@ -21,6 +17,10 @@ $('#redditSearchForm').on('submit', e => {
 
     const input = $('input[name=reddit-search-input]').val();
     resetInput();
+
+    if (!input) {
+        return;
+    }
 
     searchApi.search(input)
         .then((response, error) => {
