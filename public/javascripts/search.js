@@ -29,10 +29,6 @@ $('#redditSearchForm').on('submit', e => {
 
 });
 
-$('#redditSearchForm').keyup(e => {
-    e.keyCode === 13 ? $('#redditSearchBtn').click() : null;
-});
-
 function onRedditSearchSuccess(result, input) {
     const { data: { children } } = result;
 
