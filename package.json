@@ -2,7 +2,7 @@
   "name": "redditSearch",
   "version": "0.0.1",
   "scripts": {
-    "start": "nodemon app.js --exec babel-node --presets es2015"
+    "start": "babel-node app.js"
   },
   "author": "Idan Dagan",
   "license": "ISC",
@@ -11,22 +11,17 @@
       "es2015"
     ]
   },
+  "engine": {
+    "node": "6.9.2"
+  },
   "dependencies": {
     "babel-cli": "^6.11.4",
-    "babel-loader": "^6.2.1",
     "babel-preset-es2015": "^6.9.0",
-    "babel-preset-stage-2": "^6.11.0",
-    "babel-register": "^6.11.6",
     "body-parser": "~1.17.1",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.3",
     "eslint": "^1.10.3",
     "express": "~4.15.2",
-    "node-sass": "^4.5.3",
-    "raw-loader": "^0.5.1",
-    "sass-loader": "^6.0.5",
-    "serve-favicon": "~2.4.2",
-    "webpack": "^2.4.1",
-    "webpack-dev-server": "^2.4.2"
+    "webpack": "^2.4.1"
   }
 }
