@@ -11,6 +11,10 @@
       "es2015"
     ]
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/idandagan1/reddit-search"
+  },
   "engine": {
     "node": "6.9.2"
   },
