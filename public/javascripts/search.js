@@ -3,11 +3,16 @@ const searchApi = {
     search: (input) => {
 
         return new Promise((resolve, reject) => {
-            $.ajax(`https://www.reddit.com/search.json?q=${input}&sort=new?callback=?`, {
-                method: 'GET',
-                success: (res, status, xhr) => resolve(res),
-                error: (xhr, status, error) => reject(xhr.responseJSON),
-            });
+            try {
+                $.ajax(`https://www.reddit.com/search.json?q=${input}&sort=new?callback=?`, {
+                    method: 'GET',
+                    success: (res, status, xhr) => resolve(res),
+                    error: (xhr, status, error) => reject(xhr.statusText),
+                })
+            }
+            catch(err){
+                reject(err.message);
+            }
         });
     },
 }
@@ -23,10 +28,10 @@ $('#redditSearchForm').on('submit', e => {
     }
 
     searchApi.search(input)
-        .then((response, error) => {
-            error ? onRedditSearchFailed(error, input) : onRedditSearchSuccess(response, input);
-        });
-
+        .then(
+            response => onRedditSearchSuccess(response, input),
+            error => onRedditSearchFailed(error, input)
+        );
 });
 
 function onRedditSearchSuccess(result, input) {
@@ -47,7 +52,11 @@ function onRedditSearchSuccess(result, input) {
 }
 
 function onRedditSearchFailed(err, input) {
+
     displayDefaultResult(input);
+
+    if(err)
+        throw err;
 }
 
 function displayResult(result, input) {
@@ -79,7 +88,7 @@ function displayResult(result, input) {
 
 function createTableHeader(input) {
 
-    $('#reddit-results .panel-heading').html(`Reddit result for: <b>${input}</b>`);
+    $('#reddit-results .panel-heading').html(`Reddit results for: <b>${input}</b>`);
     $('#redditresult').append(`
         <div class="reddit-result-row">
             <div>Author</div>
@@ -94,7 +103,7 @@ function displayDefaultResult(input) {
     $('.reddit-result-row, thead').remove();
     $('.reddit-result-panel').hide();
     $('.reddit-noresult-panel').show();
-    $('.reddit-noresult-panel .panel-heading').html(`<span>No result for <b>${input}</b></span>`);
+    $('.reddit-noresult-panel .panel-heading').html(`<span>No results for: <b>${input}</b></span>`);
 }
 
 function resetInput() {
