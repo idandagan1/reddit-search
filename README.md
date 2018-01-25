@@ -1,6 +1,14 @@
-# Reddit Search
+# reddit-search
+This module returns results from reddit website
 
-### Development
-* Run `npm install`
-* Run `npm start`
-    + Starts Dev Server on port 4000.
+## Installation
+```bash
+npm i reddit-search -S
+```
+
+## Example
+```js
+const redditSearch = require('reddit-search');
+
+redditSearch('hotels');
+```

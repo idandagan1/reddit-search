@@ -1,9 +1,15 @@
 {
-  "name": "redditSearch",
-  "version": "0.0.1",
+  "name": "reddit-search",
+  "description": "get results from reddit website",
+  "version": "1.0.2",
   "scripts": {
-    "start": "babel-node app.js"
+    "start": "babel-node app.js",
+    "clean": "rm -rf lib/ dist/",
+    "build": "npm run clean && babel src --out-dir lib",
+    "test": "mocha test/*.js",
+    "prepublish": "npm run build && npm run test"
   },
+  "main": "./lib/index.js",
   "author": "Idan Dagan",
   "license": "ISC",
   "babel": {
@@ -26,6 +32,10 @@
     "debug": "~2.6.3",
     "eslint": "^1.10.3",
     "express": "~4.15.2",
+    "mocha": "^5.0.0",
     "webpack": "^2.4.1"
+  },
+  "devDependencies": {
+    "should": "^13.2.1"
   }
 }
