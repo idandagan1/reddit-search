@@ -3,10 +3,12 @@
   "description": "get results from reddit website",
   "version": "1.0.2",
   "scripts": {
-    "start": "babel-node app.js",
+    "babel-node": "babel-node --presets=es2015",
+    "start": "nodemon --exec npm run babel-node -- ./app.js",
     "clean": "rm -rf lib/ dist/",
     "build": "npm run clean && babel src --out-dir lib",
-    "test": "mocha test/*.js",
+    "test": "npm run lint && mocha --exit test/*.js",
+    "lint": "eslint app.js ./src/index.js",
     "prepublish": "npm run build && npm run test"
   },
   "main": "./lib/index.js",
@@ -22,20 +24,21 @@
     "url": "https://github.com/idandagan1/reddit-search"
   },
   "engine": {
-    "node": "6.9.2"
+    "node": "8.9.4"
   },
   "dependencies": {
     "body-parser": "~1.17.1",
     "cookie-parser": "~1.4.3",
-    "express": "~4.15.2"
+    "express": "~4.15.2",
+    "redis": "^2.8.0"
   },
   "devDependencies": {
     "babel-cli": "^6.11.4",
     "babel-preset-es2015": "^6.9.0",
     "debug": "~2.6.3",
     "eslint": "^1.10.3",
-    "should": "^13.2.1",
     "mocha": "^5.0.0",
+    "should": "^13.2.1",
     "webpack": "^2.4.1"
   }
 }

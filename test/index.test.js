@@ -1,12 +1,12 @@
 /* global it, describe */
 const should = require('should');
-const redditSearch = require('../src/index');
+const { searchReddit } = require('../lib');
 
 describe('Reddit Search', () => {
 
     describe('Testing search method', () => {
         it('should return an object', async () => {
-            const obj = await redditSearch('hotels');
+            const obj = await searchReddit('hotels');
             obj.should.be.an.Object();
         });
     });
