@@ -7,8 +7,7 @@
     "start": "nodemon --exec npm run babel-node -- ./app.js",
     "clean": "rm -rf lib/ dist/",
     "build": "npm run clean && babel src --out-dir lib",
-    "test": "npm run lint && mocha --exit test/*.js",
-    "lint": "eslint app.js ./src/index.js",
+    "test": "mocha --exit test/*.js",
     "prepublish": "npm run build && npm run test"
   },
   "main": "./lib/index.js",

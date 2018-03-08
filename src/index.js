@@ -4,8 +4,7 @@ import redis from 'redis';
 
 import https from 'https';
 
-const host = process.env.REDIS_URL;
-const client = redis.createClient({ host });
+const client = redis.createClient(process.env.REDIS_URL);
 const router = expressRouter();
 
 exports = module.exports = router;
