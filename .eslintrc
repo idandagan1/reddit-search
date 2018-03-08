@@ -18,9 +18,9 @@
       "object-curly-spacing": [2, "always"],
       "no-unused-expressions": 1
     },
-    "parserOptions": {
-      "ecmaVersion": 6,
-      "sourceType": "module"
-}
+    "parserOptions" : {
+      "ecmaVersion": 2017,
+      "sourceType"   : "module"
+  }
 }
   
