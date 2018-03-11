@@ -9,7 +9,10 @@ const isProd = process.env.DEV !== 'true';
 let client;
 
 if (isProd) {
-    client = redis.createClient(process.env.REDIS_URL);
+    client = redis.createClient({
+        host: process.env.REDIS_URL,
+        port: process.env.REDIS_PORT
+    });
 } else {
     client = redis_mock.createClient();
 }
