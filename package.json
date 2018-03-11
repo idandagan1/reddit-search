@@ -1,7 +1,7 @@
 {
   "name": "reddit-search",
   "description": "get results from reddit website",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "scripts": {
     "babel-node": "babel-node --presets=es2015",
     "start": "nodemon --exec npm run babel-node -- ./app.js",
