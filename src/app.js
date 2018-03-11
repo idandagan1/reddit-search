@@ -1,7 +1,8 @@
 import express from 'express';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
-import routes from './src/index';
+import path from 'path';
+import routes from './index';
 
 const app = express();
 const port = process.env.PORT || 4000;
@@ -9,7 +10,7 @@ const port = process.env.PORT || 4000;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(__dirname + '/'));
+app.use(express.static(path.resolve(__dirname, '../')));
 
 app.use('/query', routes);
 

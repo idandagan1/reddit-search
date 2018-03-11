@@ -5,8 +5,9 @@
   "scripts": {
     "babel-node": "babel-node --presets=es2015",
     "start": "nodemon --exec npm run babel-node -- ./app.js",
+    "start:prod": "node lib/app.js",
     "clean": "rm -rf lib/",
-    "build": "npm run clean && babel src --out-dir lib",
+    "build": "npm run clean && babel src -d lib",
     "test": "DEV=true mocha --exit test/*.js",
     "prepublish": "npm run build && npm run test"
   },
