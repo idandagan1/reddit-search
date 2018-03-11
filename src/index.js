@@ -7,6 +7,14 @@ import https from 'https';
 const client = redis.createClient(process.env.REDIS_URL);
 const router = expressRouter();
 
+client.auth(process.env.REDIS_PASS, function (err) {
+    if (err) throw err;
+});
+
+client.on('connect', function() {
+    console.log('connected to redis sucessfully');
+});
+
 exports = module.exports = router;
 
 router.get('/', handleQuery);
