@@ -1,17 +1,26 @@
 import { Router as expressRouter } from 'express';
 import { performance } from 'perf_hooks';
 import redis from 'redis';
+import redis_mock from 'redis-mock';
 
 import https from 'https';
 
-const client = redis.createClient(process.env.REDIS_URL);
+const isProd = process.env.DEV !== 'true';
+let client;
+
+if (isProd) {
+    client = redis.createClient(process.env.REDIS_URL);
+} else {
+    client = redis_mock.createClient();
+}
+
 const router = expressRouter();
 
-client.auth(process.env.REDIS_PASS, function (err) {
+client.auth(process.env.REDIS_PASS, (err) => {
     if (err) throw err;
 });
 
-client.on('connect', function() {
+client.on('connect', () => {
     console.log('connected to redis sucessfully');
 });
 

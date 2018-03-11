@@ -4,6 +4,10 @@ const { searchReddit } = require('../lib');
 
 describe('Reddit Search', () => {
 
+    before(function () {
+        this.timeout(4000);
+    })
+
     describe('Testing search method', () => {
         it('should return an object', async () => {
             const obj = await searchReddit('hotels');

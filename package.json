@@ -5,9 +5,9 @@
   "scripts": {
     "babel-node": "babel-node --presets=es2015",
     "start": "nodemon --exec npm run babel-node -- ./app.js",
-    "clean": "rm -rf lib/ dist/",
+    "clean": "rm -rf lib/",
     "build": "npm run clean && babel src --out-dir lib",
-    "test": "mocha --exit test/*.js",
+    "test": "mocha DEV=true --exit test/*.js",
     "prepublish": "npm run build && npm run test"
   },
   "main": "./lib/index.js",
@@ -37,6 +37,7 @@
     "debug": "~2.6.3",
     "eslint": "^1.10.3",
     "mocha": "^5.0.0",
+    "redis-mock": "^0.21.0",
     "should": "^13.2.1",
     "webpack": "^2.4.1"
   }
