@@ -46,11 +46,11 @@ async function handleQuery(req, res, next) {
         const cache_q = await getCache(q);
 
         if (!cache_q) {
-            console.log('cache: miss - ', cache_q);
+            console.log('cache: miss - ', q);
             result = await searchReddit(q);
             setCache(q, JSON.stringify(result));
         } else {
-            console.log('cache: hit - ', cache_q);            
+            console.log('cache: hit - ', q);            
             result = JSON.parse(cache_q);
         }
 
