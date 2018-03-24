@@ -69,7 +69,7 @@ async function handleQuery(req, res, next) {
 function getCache(key) {
     return new Promise((resolve, reject) => {
         client.get(key, (err, val) => {
-            return err ? reejct(err) : resolve(val);
+            return err ? reject(err) : resolve(val);
         });
     })
 }
